@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import Extension.LoadingClass;
 import Model.User;
 
 import static com.example.crud.MainActivity.addList;
@@ -55,6 +57,15 @@ public class ModifyActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        LoadingClass load = new LoadingClass(ModifyActivity.this);
+                        load.startLoad();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                load.dismissLoad();
+                            }
+                        }, 3000);
                         //Add into object then throw as parcelable
                         //Use variable initials, except ad = address to throw
                         String n = String.valueOf(name.getText().toString().trim());
@@ -80,6 +91,15 @@ public class ModifyActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        LoadingClass load = new LoadingClass(ModifyActivity.this);
+                        load.startLoad();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                load.dismissLoad();
+                            }
+                        }, 3000);
                         //Add into object then throw as parcelable
                         //Use variable initials, except ad = address to throw
                         String nam = String.valueOf(name.getText().toString().trim());

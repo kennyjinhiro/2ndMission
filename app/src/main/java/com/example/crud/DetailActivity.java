@@ -9,12 +9,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import Extension.LoadingClass;
 import Model.User;
 
 import static com.example.crud.MainActivity.removeList;
@@ -89,7 +91,15 @@ public class DetailActivity extends AppCompatActivity {
                 User user = bundle.getParcelable("user_detail");
                 int p = bundle.getInt("pos");
 
-
+                LoadingClass load = new LoadingClass(DetailActivity.this);
+                load.startLoad();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        load.dismissLoad();
+                    }
+                }, 3000);
                 removeList(p);
                 Intent back = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(back);

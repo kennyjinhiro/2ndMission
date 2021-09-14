@@ -12,4 +12,5 @@
     <string name="ageString">Age</string>
     <string name="addressString">Address</string>
     <string name="userDetailTitle">User Details</string>
+    <string name="loadingString">Loading</string>
 </resources>
