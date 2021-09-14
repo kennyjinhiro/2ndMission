@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CRUD</string>
+    <string name="titleList">List of Users</string>
+    <string name="title_activity_modify">ModifyActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="noData">No data</string>
+    <string name="nameString">Full Name</string>
+    <string name="ageString">Age</string>
+    <string name="addressString">Address</string>
+    <string name="userDetailTitle">User Details</string>
+</resources>
