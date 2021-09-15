@@ -4,14 +4,17 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -93,18 +96,34 @@ public class DetailActivity extends AppCompatActivity {
                 User user = bundle.getParcelable("user_detail");
                 int p = bundle.getInt("pos");
 
-                LoadingClass load = new LoadingClass(DetailActivity.this);
-                load.startLoad();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(DetailActivity.this);
+                alertBuilder.setTitle("Delete");
+                alertBuilder.setMessage("Are you sure you want to delete " + user.getFullName()+ "'s data?");
+                alertBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void run() {
-                        load.dismissLoad();
+                    public void onClick(DialogInterface dialog, int which) {
+                        LoadingClass load = new LoadingClass(DetailActivity.this);
+                        load.startLoad();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                load.dismissLoad();
+                            }
+                        }, 2000);
+                        removeList(p);
+                        Intent back = new Intent(getBaseContext(), MainActivity.class);
+                        startActivity(back);
                     }
-                }, 3000);
-                removeList(p);
-                Intent back = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(back);
+                });
+                alertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertBuilder.show();
+
             }
         });
     }
