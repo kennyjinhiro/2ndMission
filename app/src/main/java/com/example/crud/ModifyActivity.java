@@ -44,7 +44,7 @@ public class ModifyActivity extends AppCompatActivity {
         //Check intent to identify with switch if get was add or edit
         Bundle bundle = getIntent().getExtras();
         String request = bundle.getString("SEND");
-        int pos = bundle.getInt("POSITION");
+        int pos = bundle.getInt("pos");
         switch(request){
             //Continue with add
             case "add":
@@ -108,13 +108,12 @@ public class ModifyActivity extends AppCompatActivity {
 
                         //Temporary object thrower
                         User uT = new User(nam,ag,add);
-                        int uP = pos;
-                        Log.d("posCheck",String.valueOf(uP));
+                        Log.d("posCheck",String.valueOf(pos));
                         Intent editIntent = new Intent(getBaseContext(), MainActivity.class);
 
                         //Make data as intent
 
-                        updateList(uP, uT);
+                        updateList(pos, uT);
                         startActivity(editIntent);
 
                     }

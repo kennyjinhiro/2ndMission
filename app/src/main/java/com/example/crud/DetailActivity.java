@@ -67,10 +67,12 @@ public class DetailActivity extends AppCompatActivity {
                 int p = bundle.getInt("pos");
 
                 Intent i = new Intent(DetailActivity.this, ModifyActivity.class);
-
+                //Debug
+                Log.d("pos",String.valueOf(p));
                 //Sending condition through other class by the variable SEND
                 String cond = "edit";
                 i.putExtra("SEND", cond);
+                i.putExtra("pos",p);
 //                startActivityForResult(i, 0); - deprecated line
                 startActivity(i);
 

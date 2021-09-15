@@ -2,6 +2,7 @@ package Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 //Sending position through other class by the variable POSITION
                 iCard.putExtra("user_detail",userList.get(position));
                 iCard.putExtra("pos", position);
+                Log.d("POSNUMBER",String.valueOf("Current Index " + position));
 //                startActivityForResult(i, 0); - deprecated line
                 context.startActivity(iCard);
             }
