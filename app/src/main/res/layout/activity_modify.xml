@@ -77,12 +77,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age_input" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/modify_button"
         android:layout_width="300dp"
         android:layout_height="75dp"
         android:layout_marginTop="63dp"
-        android:background="@drawable/gradient"
+        android:background="#246EE9"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

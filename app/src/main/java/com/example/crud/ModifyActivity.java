@@ -59,13 +59,6 @@ public class ModifyActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         LoadingClass load = new LoadingClass(ModifyActivity.this);
                         load.startLoad();
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                load.dismissLoad();
-                            }
-                        }, 3000);
                         //Add into object then throw as parcelable
                         //Use variable initials, except ad = address to throw
                         String n = String.valueOf(name.getText().toString().trim());
@@ -76,9 +69,20 @@ public class ModifyActivity extends AppCompatActivity {
                         User uTemp = new User(n,a,ad);
 
 
-                        addList(uTemp);
-                        Intent back = new Intent(getBaseContext(), MainActivity.class);
-                        startActivity(back);
+
+
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                addList(uTemp);
+                                Intent back = new Intent(getBaseContext(), MainActivity.class);
+                                load.dismissLoad();
+                                startActivity(back);
+                            }
+                        }, 2000);
+
                     }
                 });
                 break;
@@ -93,13 +97,6 @@ public class ModifyActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         LoadingClass load = new LoadingClass(ModifyActivity.this);
                         load.startLoad();
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                load.dismissLoad();
-                            }
-                        }, 3000);
                         //Add into object then throw as parcelable
                         //Use variable initials, except ad = address to throw
                         String nam = String.valueOf(name.getText().toString().trim());
@@ -109,12 +106,23 @@ public class ModifyActivity extends AppCompatActivity {
                         //Temporary object thrower
                         User uT = new User(nam,ag,add);
                         Log.d("posCheck",String.valueOf(pos));
-                        Intent editIntent = new Intent(getBaseContext(), MainActivity.class);
+
 
                         //Make data as intent
 
-                        updateList(pos, uT);
-                        startActivity(editIntent);
+
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateList(pos, uT);
+                                Intent editIntent = new Intent(getBaseContext(), MainActivity.class);
+                                load.dismissLoad();
+                                startActivity(editIntent);
+                            }
+                        }, 2000);
+
 
                     }
                 });

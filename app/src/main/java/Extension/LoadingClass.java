@@ -2,14 +2,16 @@ package Extension;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 
 import com.example.crud.R;
 
 public class LoadingClass {
     //Call Activity and Alert Dialog
-    Activity activity;
-    AlertDialog dialog;
+    private Activity activity;
+    private AlertDialog dialog;
 
     public LoadingClass(Activity myActivity){
         activity = myActivity;
@@ -24,6 +26,9 @@ public class LoadingClass {
 
         dialog = builder.create();
         dialog.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setLayout(200, 200);
+
     }
 
     public void dismissLoad(){
